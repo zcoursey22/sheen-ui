@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
+:root {
+    --blue: #3687e4;
+    --aqua: #58c8db;
+    --teal: #2bb4a2;
+    --green: #48c25d;
+    --yellow: #ffbb00;
+    --orange: #ff7535;
+    --peach: #f78e7b;
+    --red: #ff3a4a;
+    --magenta: #d84bb5;
+    --purple: #a02dbd;
+    --violet: #6126af;
+    --navy: #331d81;
+    --black: #222;
+    --white: white;
+    --shadow: rgba(0, 0, 0, 0.4);
+
+    --box-shadow: 0 0.2rem 0.15rem -0.1rem var(--shadow);
+}
+
+html {
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: 'Noto Sans', sans-serif;
+    outline: none;
+}
