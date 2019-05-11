@@ -14,10 +14,17 @@
     --violet: #6126af;
     --navy: #331d81;
     --black: #222;
+    --medium-grey: #bbb;
+    --grey: #ddd;
+    --light-grey: #eee;
+    --white-grey: #f5f5f5;
     --white: white;
     --shadow: rgba(0, 0, 0, 0.4);
 
     --box-shadow: 0 0.2rem 0.15rem -0.1rem var(--shadow);
+
+    --primary: var(--teal);
+    --secondary: var(--peach);
 }
 
 html {

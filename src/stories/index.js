@@ -29,3 +29,13 @@ storiesOf('Components|Button', module)
       Click Me
     </Button>
   ))
+  .add('rounded', () => (
+    <Button onClick={action('clicked')} rounded>
+      Click Me
+    </Button>
+  ))
+  .add('disabled', () => (
+    <Button onClick={action('clicked')} disabled>
+      Click Me
+    </Button>
+  ))
