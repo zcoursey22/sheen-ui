@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import theme from '../utils/theme.js'
 
 const Button = ({ children, onClick, variant, rounded, disabled }) => {
   const variants = {
@@ -10,19 +11,22 @@ const Button = ({ children, onClick, variant, rounded, disabled }) => {
   }
   const StyledButton = variants[variant]
   return (
-    <StyledButton
-      data-testid='button'
-      onClick={onClick}
-      rounded={rounded}
-      disabled={disabled}
-    >
-      {children.toUpperCase()}
-    </StyledButton>
+    <ThemeProvider theme={theme}>
+      <StyledButton
+        data-testid='button'
+        onClick={onClick}
+        rounded={rounded}
+        disabled={disabled}
+      >
+        {children.toUpperCase()}
+      </StyledButton>
+    </ThemeProvider>
   )
 }
 
 const DefaultButton = styled.button`
-  background: ${props => (props.disabled ? 'var(--grey)' : 'var(--primary)')};
+  background: ${props =>
+    props.disabled ? 'var(--grey)' : props.theme.primary};
   color: ${props => (props.disabled ? 'var(--medium-grey)' : 'var(--white)')};
   border: 0.1rem solid transparent;
   border-radius: ${props => (props.rounded ? '10rem' : '0.3rem')};
@@ -36,16 +40,18 @@ const DefaultButton = styled.button`
 `
 
 const GhostButton = styled(DefaultButton)`
-  color: ${props => (props.disabled ? 'var(--medium-grey)' : 'var(--black)')};
+  color: ${props =>
+    props.disabled ? 'var(--medium-grey)' : props.theme.primary};
   border: 0.1rem solid;
   border-color: ${props =>
-    props.disabled ? 'var(--medium-grey)' : 'var(--black)'};
+    props.disabled ? 'var(--medium-grey)' : props.theme.primary};
   background: none;
   box-shadow: none;
 `
 
 const TextButton = styled(DefaultButton)`
-  color: ${props => (props.disabled ? 'var(--medium-grey)' : 'var(--black)')};
+  color: ${props =>
+    props.disabled ? 'var(--medium-grey)' : props.theme.primary};
   background: none;
   box-shadow: none;
 `
