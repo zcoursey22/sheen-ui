@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
 // import { linkTo } from '@storybook/addon-links'
 
-import { Button } from '../lib'
+import { Button, Platform } from '../lib'
 
 const styles = {
   padding: '0.5rem',
@@ -52,7 +52,7 @@ storiesOf('Button', module)
       </Button>
     ),
     {
-      notes: 'A standard button',
+      notes: 'A ghost button',
     }
   )
   .add(
@@ -73,6 +73,12 @@ storiesOf('Button', module)
       </Button>
     ),
     {
-      notes: 'A standard button',
+      notes: 'A text-only button',
     }
   )
+
+storiesOf('Platform', module).add('Default', () => (
+  <Platform>
+    <Button>Click Me</Button>
+  </Platform>
+))

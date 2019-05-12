@@ -128,7 +128,7 @@ Button.defaultProps = {
   size: 'medium',
   hiddenColor: false,
   allCaps: true,
-  fontWeight: 700,
+  fontWeight: '700',
 }
 
 Button.propTypes = {
@@ -140,7 +140,7 @@ Button.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   hiddenColor: PropTypes.bool,
-  fontWeight: PropTypes.oneOf([400, 700]),
+  fontWeight: PropTypes.oneOf(['400', '700']),
 }
 
 export default Button

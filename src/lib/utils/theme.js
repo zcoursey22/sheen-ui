@@ -6,7 +6,8 @@ const white = '#fff'
 const black = '#222'
 
 export default {
-  black: black,
+  black,
+  white,
   primary: {
     main: teal,
     text: white,
