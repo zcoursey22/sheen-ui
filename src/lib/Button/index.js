@@ -73,9 +73,7 @@ const GhostButton = styled(DefaultButton)`
 
 const TextButton = styled(DefaultButton)`
   color: ${props =>
-    props.disabled
-      ? props.theme[props.color].text
-      : props.theme[props.color].main};
+    props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
   background: none;
   box-shadow: none;
 `

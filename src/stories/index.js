@@ -2,9 +2,9 @@ import React from 'react'
 
 import { storiesOf, addDecorator } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
+import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
+// import { linkTo } from '@storybook/addon-links'
 
-import { Welcome } from '@storybook/react/demo'
 import { Button } from '../lib'
 
 const styles = {
@@ -12,45 +12,59 @@ const styles = {
 }
 const PaddingDecorator = storyFn => <div style={styles}>{storyFn()}</div>
 addDecorator(PaddingDecorator)
+addDecorator(withKnobs)
 
-storiesOf('Welcome', module).add('to Storybook', () => (
-  <Welcome showApp={linkTo('DemoButton')} />
-))
-
-storiesOf('Components|Button', module)
-  .add('default', () => <Button onClick={action('clicked')}>Click Me</Button>)
-  .add('ghost', () => (
-    <Button onClick={action('clicked')} variant='ghost'>
-      Click Me
-    </Button>
-  ))
-  .add('text', () => (
-    <Button onClick={action('clicked')} variant='text'>
-      Click Me
-    </Button>
-  ))
-  .add('rounded', () => (
-    <Button onClick={action('clicked')} rounded>
-      Click Me
-    </Button>
-  ))
-  .add('secondary color', () => (
-    <Button onClick={action('clicked')} color='secondary'>
-      Click Me
-    </Button>
-  ))
-  .add('disabled', () => (
-    <Button onClick={action('clicked')} disabled>
-      Click Me
-    </Button>
-  ))
-  .add('small', () => (
-    <Button onClick={action('clicked')} size='small'>
-      Click Me
-    </Button>
-  ))
-  .add('large', () => (
-    <Button onClick={action('clicked')} size='large'>
-      Click Me
-    </Button>
-  ))
+storiesOf('Button', module)
+  .add(
+    'default',
+    () => (
+      <Button
+        onClick={action('clicked')}
+        disabled={boolean('Disabled', false)}
+        rounded={boolean('Rounded', false)}
+        color={radios('Color', ['primary', 'secondary'], 'primary')}
+        size={radios('Size', ['small', 'medium', 'large'], 'medium')}
+      >
+        {text('Label', 'Click Me')}
+      </Button>
+    ),
+    {
+      notes: 'A standard button',
+    }
+  )
+  .add(
+    'ghost',
+    () => (
+      <Button
+        variant='ghost'
+        onClick={action('clicked')}
+        disabled={boolean('Disabled', false)}
+        rounded={boolean('Rounded', false)}
+        color={radios('Color', ['primary', 'secondary'], 'primary')}
+        size={radios('Size', ['small', 'medium', 'large'], 'medium')}
+      >
+        {text('Label', 'Click Me')}
+      </Button>
+    ),
+    {
+      notes: 'A standard button',
+    }
+  )
+  .add(
+    'text',
+    () => (
+      <Button
+        variant='text'
+        onClick={action('clicked')}
+        disabled={boolean('Disabled', false)}
+        rounded={boolean('Rounded', false)}
+        color={radios('Color', ['primary', 'secondary'], 'primary')}
+        size={radios('Size', ['small', 'medium', 'large'], 'medium')}
+      >
+        {text('Label', 'Click Me')}
+      </Button>
+    ),
+    {
+      notes: 'A standard button',
+    }
+  )
