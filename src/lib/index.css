@@ -38,5 +38,6 @@ html {
     font-weight: 400;
     font-size: 1rem;
     font-family: 'Noto Sans', sans-serif;
+    color: var(--black);
     outline: none;
 }

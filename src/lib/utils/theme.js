@@ -25,7 +25,8 @@ export default {
     text: 'var(--yellow)',
   },
   error: {
-    main: 'var(--error-bg)',
+    main: 'var(--red)',
     text: 'var(--red)',
+    field: 'var(--error-bg)',
   },
 }
