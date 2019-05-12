@@ -2,10 +2,24 @@ import React from 'react'
 
 import { storiesOf, addDecorator } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
+import {
+  withKnobs,
+  text,
+  boolean,
+  radios,
+  number,
+} from '@storybook/addon-knobs'
 // import { linkTo } from '@storybook/addon-links'
 
-import { Button, Platform, Text, Title, Subtitle, Paragraph } from '../lib'
+import {
+  Button,
+  Platform,
+  Spacer,
+  Text,
+  Title,
+  Subtitle,
+  Paragraph,
+} from '../lib'
 
 const styles = {
   padding: '1.5rem',
@@ -14,24 +28,41 @@ const PaddingDecorator = storyFn => <div style={styles}>{storyFn()}</div>
 addDecorator(PaddingDecorator)
 addDecorator(withKnobs)
 
-storiesOf('Containers', module).add('Platform', () => (
-  <Platform>
-    <Title fontWeight='400'>This is a Platform</Title>
-    <Subtitle color='secondary' allCaps align='left'>
-      Check it out
-    </Subtitle>
-    <Paragraph>
-      Lorem ipsum dolor amet pour-over snackwave flannel asymmetrical blue
-      bottle synth paleo scenester post-ironic selvage. Humblebrag pop-up
-      cardigan williamsburg cray food truck la croix cloud bread hammock pok pok
-      slow-carb. Beard seitan swag XOXO health goth meh subway tile schlitz,
-      blue bottle marfa tbh palo santo fanny pack thundercats.
-    </Paragraph>
-    <Button fullWidth onClick={action('clicked')}>
-      Click Me
-    </Button>
-  </Platform>
-))
+storiesOf('Containers', module)
+  .add('Platform', () => (
+    <Platform
+      elevation={number('Elevation', 1, {
+        range: true,
+        min: 0,
+        max: 5,
+        step: 1,
+      })}
+    >
+      <Subtitle align='left'>Platform</Subtitle>
+      <Paragraph>
+        Lorem ipsum dolor amet pour-over snackwave flannel asymmetrical blue
+        bottle synth paleo scenester post-ironic selvage. Humblebrag pop-up
+        cardigan williamsburg cray food truck la croix cloud bread hammock pok
+        pok slow-carb. Beard seitan swag XOXO health goth meh subway tile
+        schlitz, blue bottle marfa tbh palo santo fanny pack thundercats.
+      </Paragraph>
+    </Platform>
+  ))
+  .add('Spacer', () => (
+    <Spacer
+      direction={radios('Direction', ['col', 'row'], 'col')}
+      space={number('Space', 1, {
+        range: true,
+        min: 0,
+        max: 5,
+        step: 0.1,
+      })}
+    >
+      <Button onClick={action('clicked')}>Button 1</Button>
+      <Button onClick={action('clicked')}>Button 2</Button>
+      <Button onClick={action('clicked')}>Button 3</Button>
+    </Spacer>
+  ))
 
 storiesOf('Buttons', module).add(
   'Button',
@@ -41,11 +72,18 @@ storiesOf('Buttons', module).add(
       variant={radios('Variant', ['default', 'ghost', 'text'], 'default')}
       disabled={boolean('Disabled', false)}
       rounded={boolean('Rounded', false)}
+      hiddenColor={boolean('Hidden Color', false)}
       color={radios('Color', ['primary', 'secondary'], 'primary')}
       size={radios('Size', ['small', 'medium', 'large'], 'medium')}
       fontWeight={radios('Font Weight', ['400', '700'], '700')}
       allCaps={boolean('All Caps', true)}
       fullWidth={boolean('Full Width', false)}
+      elevation={number('Elevation', 1, {
+        range: true,
+        min: 0,
+        max: 5,
+        step: 1,
+      })}
     >
       {text('Label', 'Click Me')}
     </Button>
@@ -61,11 +99,6 @@ storiesOf('Typograghy', module)
       color={radios('Color', ['default', 'primary', 'secondary'], 'default')}
       allCaps={boolean('All Caps', false)}
       fontWeight={radios('Font Weight', ['400', '700'], '400')}
-      align={radios(
-        'Text Align',
-        ['left', 'center', 'right', 'justify'],
-        'left'
-      )}
     >
       Here's some text
     </Text>

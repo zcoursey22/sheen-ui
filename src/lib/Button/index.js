@@ -16,6 +16,7 @@ const Button = ({
   allCaps,
   fontWeight,
   fullWidth,
+  elevation,
 }) => {
   const variants = {
     default: Default,
@@ -40,6 +41,7 @@ const Button = ({
         hiddenColor={hiddenColor}
         fontWeight={fontWeight}
         fullWidth={fullWidth}
+        elevation={elevation}
       >
         {allCaps ? children.toUpperCase() : children}
       </Styled>
@@ -68,8 +70,9 @@ const Default = styled.button`
   padding: ${props => getPadding(props.size)};
   font-weight: ${props => props.fontWeight};
   cursor: pointer;
-  pointer-events: ${props => (props.disabled ? 'none' : 'default')};
-  box-shadow: ${props => (props.disabled ? 'none' : 'var(--box-shadow)')};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
+  box-shadow: ${props =>
+    props.disabled ? 'none' : props.theme.boxShadow[props.elevation]};
   transition: 0.15s;
   user-select: none;
   width: ${props => (props.fullWidth ? '100%' : 'auto')};
@@ -133,6 +136,7 @@ Button.defaultProps = {
   allCaps: true,
   fontWeight: '700',
   fullWidth: false,
+  elevation: 1,
 }
 
 Button.propTypes = {
@@ -146,6 +150,7 @@ Button.propTypes = {
   hiddenColor: PropTypes.bool,
   fontWeight: PropTypes.oneOf(['400', '700']),
   fullWidth: PropTypes.bool,
+  elevation: PropTypes.number,
 }
 
 export default Button
