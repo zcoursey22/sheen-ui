@@ -14,7 +14,7 @@ const PaddingDecorator = storyFn => <div style={styles}>{storyFn()}</div>
 addDecorator(PaddingDecorator)
 addDecorator(withKnobs)
 
-storiesOf('Button', module)
+storiesOf('Buttons|Button', module)
   .add(
     'default',
     () => (

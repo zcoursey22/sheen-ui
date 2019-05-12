@@ -1,13 +1,17 @@
 import '../index.css'
 
+const teal = '#2bb4a2'
+const peach = '#f78e7b'
+const white = '#fff'
+
 export default {
   primary: {
-    main: 'var(--teal)',
-    text: 'var(--white)',
+    main: teal,
+    text: white,
   },
   secondary: {
-    main: 'var(--peach)',
-    text: 'var(--white)',
+    main: peach,
+    text: white,
   },
   disabled: {
     main: 'var(--grey)',

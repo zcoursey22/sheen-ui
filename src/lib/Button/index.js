@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from '../utils/theme.js'
+import { darken, desaturate, opacify } from 'polished'
 
 const Button = ({
   children,
@@ -59,6 +60,15 @@ const DefaultButton = styled.button`
   box-shadow: ${props => (props.disabled ? 'none' : 'var(--box-shadow)')};
   transition: 0.15s;
   user-select: none;
+  &:hover {
+    background: ${props =>
+      darken(0.05, desaturate(0.1, props.theme[props.color].main))};
+  }
+  &:focus {
+    transition: 0.05s;
+    box-shadow: ${props =>
+      `0 0 0 0.2rem ${opacify(-0.5, props.theme[props.color].main)}`};
+  }
 `
 
 const GhostButton = styled(DefaultButton)`
@@ -69,6 +79,9 @@ const GhostButton = styled(DefaultButton)`
     props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
   background: none;
   box-shadow: none;
+  &:hover {
+    background: ${props => opacify(-0.9, props.theme[props.color].main)};
+  }
 `
 
 const TextButton = styled(DefaultButton)`
@@ -76,6 +89,9 @@ const TextButton = styled(DefaultButton)`
     props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
   background: none;
   box-shadow: none;
+  &:hover {
+    background: ${props => opacify(-0.9, props.theme[props.color].main)};
+  }
 `
 
 Button.defaultProps = {
