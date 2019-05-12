@@ -3,8 +3,10 @@ import '../index.css'
 const teal = '#2bb4a2'
 const peach = '#f78e7b'
 const white = '#fff'
+const black = '#222'
 
 export default {
+  black: black,
   primary: {
     main: teal,
     text: white,

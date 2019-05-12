@@ -12,6 +12,9 @@ const Button = ({
   disabled,
   color,
   size,
+  hiddenColor,
+  allCaps,
+  fontWeight,
 }) => {
   const variants = {
     default: Default,
@@ -33,8 +36,10 @@ const Button = ({
         disabled={disabled}
         color={color}
         size={size}
+        hiddenColor={hiddenColor}
+        fontWeight={fontWeight}
       >
-        {children.toUpperCase()}
+        {allCaps ? children.toUpperCase() : children}
       </Styled>
     </ThemeProvider>
   )
@@ -59,7 +64,7 @@ const Default = styled.button`
   border: 0.1rem solid transparent;
   border-radius: ${props => (props.rounded ? '10rem' : '0.3rem')};
   padding: ${props => getPadding(props.size)};
-  font-weight: 700;
+  font-weight: ${props => props.fontWeight};
   cursor: pointer;
   pointer-events: ${props => (props.disabled ? 'none' : 'default')};
   box-shadow: ${props => (props.disabled ? 'none' : 'var(--box-shadow)')};
@@ -78,23 +83,38 @@ const Default = styled.button`
 
 const Ghost = styled(Default)`
   color: ${props =>
-    props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
+    props.disabled
+      ? props.theme.disabled.text
+      : props.hiddenColor
+      ? props.theme.black
+      : props.theme[props.color].main};
   border: 0.1rem solid;
   border-color: ${props =>
-    props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
+    props.disabled
+      ? props.theme.disabled.text
+      : props.hiddenColor
+      ? props.theme.black
+      : props.theme[props.color].main};
   background: none;
   box-shadow: none;
   &:hover {
+    color: ${props => props.theme[props.color].main};
+    border-color: ${props => props.theme[props.color].main};
     background: ${props => opacify(-0.9, props.theme[props.color].main)};
   }
 `
 
 const Text = styled(Default)`
   color: ${props =>
-    props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
+    props.disabled
+      ? props.theme.disabled.text
+      : props.hiddenColor
+      ? props.theme.black
+      : props.theme[props.color].main};
   background: none;
   box-shadow: none;
   &:hover {
+    color: ${props => props.theme[props.color].main};
     background: ${props => opacify(-0.9, props.theme[props.color].main)};
   }
 `
@@ -106,6 +126,9 @@ Button.defaultProps = {
   rounded: false,
   color: 'primary',
   size: 'medium',
+  hiddenColor: false,
+  allCaps: true,
+  fontWeight: 700,
 }
 
 Button.propTypes = {
@@ -116,6 +139,8 @@ Button.propTypes = {
   rounded: PropTypes.bool,
   color: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  hiddenColor: PropTypes.bool,
+  fontWeight: PropTypes.oneOf([400, 700]),
 }
 
 export default Button

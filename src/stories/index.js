@@ -14,9 +14,9 @@ const PaddingDecorator = storyFn => <div style={styles}>{storyFn()}</div>
 addDecorator(PaddingDecorator)
 addDecorator(withKnobs)
 
-storiesOf('Buttons|Button', module)
+storiesOf('Button', module)
   .add(
-    'default',
+    'Default',
     () => (
       <Button
         onClick={action('clicked')}
@@ -24,6 +24,8 @@ storiesOf('Buttons|Button', module)
         rounded={boolean('Rounded', false)}
         color={radios('Color', ['primary', 'secondary'], 'primary')}
         size={radios('Size', ['small', 'medium', 'large'], 'medium')}
+        fontWeight={radios('Font Weight', ['400', '700'], '700')}
+        allCaps={boolean('All Caps', true)}
       >
         {text('Label', 'Click Me')}
       </Button>
@@ -33,7 +35,7 @@ storiesOf('Buttons|Button', module)
     }
   )
   .add(
-    'ghost',
+    'Ghost',
     () => (
       <Button
         variant='ghost'
@@ -42,6 +44,9 @@ storiesOf('Buttons|Button', module)
         rounded={boolean('Rounded', false)}
         color={radios('Color', ['primary', 'secondary'], 'primary')}
         size={radios('Size', ['small', 'medium', 'large'], 'medium')}
+        hiddenColor={boolean('Hidden Color', false)}
+        fontWeight={radios('Font Weight', ['400', '700'], '700')}
+        allCaps={boolean('All Caps', true)}
       >
         {text('Label', 'Click Me')}
       </Button>
@@ -51,7 +56,7 @@ storiesOf('Buttons|Button', module)
     }
   )
   .add(
-    'text',
+    'Text',
     () => (
       <Button
         variant='text'
@@ -60,6 +65,9 @@ storiesOf('Buttons|Button', module)
         rounded={boolean('Rounded', false)}
         color={radios('Color', ['primary', 'secondary'], 'primary')}
         size={radios('Size', ['small', 'medium', 'large'], 'medium')}
+        hiddenColor={boolean('Hidden Color', false)}
+        fontWeight={radios('Font Weight', ['400', '700'], '700')}
+        allCaps={boolean('All Caps', true)}
       >
         {text('Label', 'Click Me')}
       </Button>
