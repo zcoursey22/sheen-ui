@@ -11,7 +11,7 @@ const Title = ({ children, color, allCaps, fontWeight, align }) => (
   </ThemeProvider>
 )
 
-const Styled = styled.span`
+const Styled = styled.h1`
   color: ${props =>
     props.color === 'default'
       ? props.theme.black
