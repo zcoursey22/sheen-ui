@@ -13,6 +13,7 @@ import {
 
 import {
   Button,
+  Container,
   Platform,
   Spacer,
   Text,
@@ -29,6 +30,20 @@ addDecorator(PaddingDecorator)
 addDecorator(withKnobs)
 
 storiesOf('Containers', module)
+  .add('Container', () => (
+    <Container
+      minWidth={number('Min Width', 200, {range: true, min: 0, max: 1000, step: 1 })} 
+      maxWidth={number('Max Width', 700, {range: true, min: 100, max: 1000, step: 1 })}>
+      <Paragraph>
+        Lo-fi distillery yr art party asymmetrical plaid Williamsburg pop-up
+        Pitchfork viral Tumblr Cosby sweater Bushwick disrupt 8-bit wayfarers
+        gastropub vinyl iPhone ennui before they sold out Blue Bottle lomo
+        fashion axe pork belly food truck four loko Etsy Vice PBR Banksy roof
+        party hella YOLO Portland crucifix sartorial ugh normcore photo booth
+        skateboard Odd Future street art.
+      </Paragraph>
+    </Container>
+  ))
   .add('Platform', () => (
     <Platform
       elevation={number('Elevation', 1, {
@@ -38,7 +53,6 @@ storiesOf('Containers', module)
         step: 1,
       })}
     >
-      <Subtitle align='left'>Platform</Subtitle>
       <Paragraph>
         Lorem ipsum dolor amet pour-over snackwave flannel asymmetrical blue
         bottle synth paleo scenester post-ironic selvage. Humblebrag pop-up
