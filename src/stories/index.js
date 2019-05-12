@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
 // import { linkTo } from '@storybook/addon-links'
 
-import { Button, Platform, Text, Title } from '../lib'
+import { Button, Platform, Text, Title, Subtitle } from '../lib'
 
 const styles = {
   padding: '0.5rem',
@@ -16,6 +16,8 @@ addDecorator(withKnobs)
 
 storiesOf('Containers', module).add('Platform', () => (
   <Platform>
+    <Title>This is a Platform</Title>
+    <Subtitle>Check it out</Subtitle>
     <Button>Click Me</Button>
   </Platform>
 ))
@@ -47,6 +49,11 @@ storiesOf('Typograghy', module)
       color={radios('Color', ['default', 'primary', 'secondary'], 'default')}
       allCaps={boolean('All Caps', false)}
       fontWeight={radios('Font Weight', ['400', '700'], '400')}
+      align={radios(
+        'Text Align',
+        ['left', 'center', 'right', 'justify'],
+        'left'
+      )}
     >
       Here's some text
     </Text>
@@ -56,7 +63,26 @@ storiesOf('Typograghy', module)
       color={radios('Color', ['default', 'primary', 'secondary'], 'default')}
       allCaps={boolean('All Caps', false)}
       fontWeight={radios('Font Weight', ['400', '700'], '700')}
+      align={radios(
+        'Text Align',
+        ['left', 'center', 'right', 'justify'],
+        'center'
+      )}
     >
       Some Title
     </Title>
+  ))
+  .add('Subtitle', () => (
+    <Subtitle
+      color={radios('Color', ['default', 'primary', 'secondary'], 'default')}
+      allCaps={boolean('All Caps', false)}
+      fontWeight={radios('Font Weight', ['400', '700'], '700')}
+      align={radios(
+        'Text Align',
+        ['left', 'center', 'right', 'justify'],
+        'center'
+      )}
+    >
+      Some Subtitle
+    </Subtitle>
   ))
