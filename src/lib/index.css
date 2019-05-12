@@ -21,6 +21,9 @@
     --white: white;
     --shadow: rgba(0, 0, 0, 0.4);
 
+    --warning-bg: #fff5da;
+    --error-bg: #ffd2d6;
+
     --box-shadow: 0 0.2rem 0.15rem -0.1rem var(--shadow);
 }
 

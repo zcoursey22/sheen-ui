@@ -34,8 +34,23 @@ storiesOf('Components|Button', module)
       Click Me
     </Button>
   ))
+  .add('secondary color', () => (
+    <Button onClick={action('clicked')} color='secondary'>
+      Click Me
+    </Button>
+  ))
   .add('disabled', () => (
     <Button onClick={action('clicked')} disabled>
+      Click Me
+    </Button>
+  ))
+  .add('small', () => (
+    <Button onClick={action('clicked')} size='small'>
+      Click Me
+    </Button>
+  ))
+  .add('large', () => (
+    <Button onClick={action('clicked')} size='large'>
       Click Me
     </Button>
   ))
