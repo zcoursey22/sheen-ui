@@ -16,9 +16,13 @@ addDecorator(withKnobs)
 
 storiesOf('Containers', module).add('Platform', () => (
   <Platform>
-    <Title>This is a Platform</Title>
-    <Subtitle>Check it out</Subtitle>
-    <Button>Click Me</Button>
+    <Title fontWeight='400'>This is a Platform</Title>
+    <Subtitle color='secondary' allCaps align='left'>
+      Check it out
+    </Subtitle>
+    <Button fullWidth onClick={action('clicked')}>
+      Click Me
+    </Button>
   </Platform>
 ))
 
@@ -34,6 +38,7 @@ storiesOf('Buttons', module).add(
       size={radios('Size', ['small', 'medium', 'large'], 'medium')}
       fontWeight={radios('Font Weight', ['400', '700'], '700')}
       allCaps={boolean('All Caps', true)}
+      fullWidth={boolean('Full Width', false)}
     >
       {text('Label', 'Click Me')}
     </Button>

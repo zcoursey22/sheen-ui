@@ -15,6 +15,7 @@ const Button = ({
   hiddenColor,
   allCaps,
   fontWeight,
+  fullWidth,
 }) => {
   const variants = {
     default: Default,
@@ -38,6 +39,7 @@ const Button = ({
         size={size}
         hiddenColor={hiddenColor}
         fontWeight={fontWeight}
+        fullWidth={fullWidth}
       >
         {allCaps ? children.toUpperCase() : children}
       </Styled>
@@ -70,6 +72,7 @@ const Default = styled.button`
   box-shadow: ${props => (props.disabled ? 'none' : 'var(--box-shadow)')};
   transition: 0.15s;
   user-select: none;
+  width: ${props => (props.fullWidth ? '100%' : 'auto')};
   &:hover {
     background: ${props =>
       darken(0.05, desaturate(0.1, props.theme[props.color].main))};
@@ -129,6 +132,7 @@ Button.defaultProps = {
   hiddenColor: false,
   allCaps: true,
   fontWeight: '700',
+  fullWidth: false,
 }
 
 Button.propTypes = {
@@ -141,6 +145,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   hiddenColor: PropTypes.bool,
   fontWeight: PropTypes.oneOf(['400', '700']),
+  fullWidth: PropTypes.bool,
 }
 
 export default Button
