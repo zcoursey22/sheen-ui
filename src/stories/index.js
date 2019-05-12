@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
 // import { linkTo } from '@storybook/addon-links'
 
-import { Button, Platform, Text } from '../lib'
+import { Button, Platform, Text, Title } from '../lib'
 
 const styles = {
   padding: '0.5rem',
@@ -41,16 +41,22 @@ storiesOf('Buttons', module).add(
   }
 )
 
-storiesOf('Typograghy', module).add('Text', () => (
-  <Text
-    color={radios(
-      'Color',
-      ['default', 'primary', 'secondary', 'error'],
-      'default'
-    )}
-    allCaps={boolean('All Caps', false)}
-    fontWeight={radios('Font Weight', ['400', '700'], '400')}
-  >
-    Here's some text
-  </Text>
-))
+storiesOf('Typograghy', module)
+  .add('Text', () => (
+    <Text
+      color={radios('Color', ['default', 'primary', 'secondary'], 'default')}
+      allCaps={boolean('All Caps', false)}
+      fontWeight={radios('Font Weight', ['400', '700'], '400')}
+    >
+      Here's some text
+    </Text>
+  ))
+  .add('Title', () => (
+    <Title
+      color={radios('Color', ['default', 'primary', 'secondary'], 'default')}
+      allCaps={boolean('All Caps', false)}
+      fontWeight={radios('Font Weight', ['400', '700'], '700')}
+    >
+      Some Title
+    </Title>
+  ))

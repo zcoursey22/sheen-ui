@@ -3,15 +3,13 @@ import PropTypes from 'prop-types'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from '../utils/theme.js'
 
-const Text = ({ children, color, allCaps, fontWeight }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Styled color={color} fontWeight={fontWeight}>
-        {allCaps ? children.toUpperCase() : children}
-      </Styled>
-    </ThemeProvider>
-  )
-}
+const Title = ({ children, color, allCaps, fontWeight }) => (
+  <ThemeProvider theme={theme}>
+    <Styled color={color} fontWeight={fontWeight}>
+      {allCaps ? children.toUpperCase() : children}
+    </Styled>
+  </ThemeProvider>
+)
 
 const Styled = styled.span`
   color: ${props =>
@@ -19,18 +17,19 @@ const Styled = styled.span`
       ? props.theme.black
       : props.theme[props.color].main};
   font-weight: ${props => props.fontWeight};
+  font-size: 3em;
 `
 
-Text.defaultProps = {
+Title.defaultProps = {
   color: 'default',
   allCaps: false,
-  fontWeight: '400',
+  fontWeight: '700',
 }
 
-Text.propTypes = {
+Title.propTypes = {
   children: PropTypes.string.isRequired,
   color: PropTypes.oneOf(['default', 'primary', 'secondary']),
   fontWeight: PropTypes.oneOf(['400', '700']),
 }
 
-export default Text
+export default Title
