@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from '../utils/theme.js'
@@ -19,11 +19,16 @@ const Button = ({
     text: Text,
   }
   const Styled = variants[variant]
+  const ref = useRef(null)
   return (
     <ThemeProvider theme={theme}>
       <Styled
+        ref={ref}
         data-testid='button'
-        onClick={onClick}
+        onClick={() => {
+          onClick()
+          ref.current.blur()
+        }}
         rounded={rounded}
         disabled={disabled}
         color={color}
@@ -64,7 +69,7 @@ const Default = styled.button`
     background: ${props =>
       darken(0.05, desaturate(0.1, props.theme[props.color].main))};
   }
-  &:focus {
+  &:focus:not(:active) {
     transition: 0.05s;
     box-shadow: ${props =>
       `0 0 0 0.2rem ${opacify(-0.5, props.theme[props.color].main)}`};
