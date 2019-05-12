@@ -14,14 +14,14 @@ const Button = ({
   size,
 }) => {
   const variants = {
-    default: DefaultButton,
-    ghost: GhostButton,
-    text: TextButton,
+    default: Default,
+    ghost: Ghost,
+    text: Text,
   }
-  const StyledButton = variants[variant]
+  const Styled = variants[variant]
   return (
     <ThemeProvider theme={theme}>
-      <StyledButton
+      <Styled
         data-testid='button'
         onClick={onClick}
         rounded={rounded}
@@ -30,7 +30,7 @@ const Button = ({
         size={size}
       >
         {children.toUpperCase()}
-      </StyledButton>
+      </Styled>
     </ThemeProvider>
   )
 }
@@ -46,7 +46,7 @@ const getPadding = size => {
   }
 }
 
-const DefaultButton = styled.button`
+const Default = styled.button`
   background: ${props =>
     props.disabled ? props.theme.disabled.main : props.theme[props.color].main};
   color: ${props =>
@@ -71,7 +71,7 @@ const DefaultButton = styled.button`
   }
 `
 
-const GhostButton = styled(DefaultButton)`
+const Ghost = styled(Default)`
   color: ${props =>
     props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
   border: 0.1rem solid;
@@ -84,7 +84,7 @@ const GhostButton = styled(DefaultButton)`
   }
 `
 
-const TextButton = styled(DefaultButton)`
+const Text = styled(Default)`
   color: ${props =>
     props.disabled ? props.theme.disabled.text : props.theme[props.color].main};
   background: none;
@@ -109,7 +109,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['default', 'ghost', 'text']),
   disabled: PropTypes.bool,
   rounded: PropTypes.bool,
-  color: PropTypes.string,
+  color: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 }
 
